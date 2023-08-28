@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de miembros</title>
+</head>
+<body>
+    {% block content %}
+    <h1>aqui va una tabla</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre completo</th>
+                <th>tier</th>
+                <td>Fecha</td>
+                <td>monto</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                {% for data in dataTable%}
+
+                <th>{{data.nombreCompleto}}</th>
+                <th>{{data.tierlist}}</th>
+                <th>{{data.fecha}}</th>
+                <th>{{data.monto}}</th>
+
+                {% endfor%}
+                <th></th>
+            </tr>
+        </tbody>
+    </table>
+
+    {% endblock content %}
+</body>
+</html>
