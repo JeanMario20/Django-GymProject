@@ -23,11 +23,13 @@
             <tr>
                 {% for data in dataTable%}
 
-                <th>{{data.nombreCompleto}}</th>
-                <th>{{data.Tierlist}}</th>
-                <th>{{data.Fecha}}</th>
-                <th>{{data.monto}}</th>
-
+                <td>{{data.nombreCompleto}}</td>
+                <td>{{data.Tierlist}}</td>
+                <td>{{data.Fecha}}</td>
+                <td>{{data.monto}}</td>
+                <td>
+                    <a href="{% url 'edit-miembro' data.id %}">Edit</a>
+                </td>
                 {% endfor%}
                 
             </tr>

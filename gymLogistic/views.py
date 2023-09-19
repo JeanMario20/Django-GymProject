@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from .models import Miembros
@@ -10,9 +10,6 @@ from .forms import MiembrosForm
 
 def view_table(request):
     dataTable = Miembros.objects.all()
-    #imprimir_nombre_miembro.apply_async(countdown=1, repeat=True)
-    #task1 = actualizar_dato_periodicamente.appy_async()
-    #actualizar_dato_periodicamente.apply_async(countdown=20)
     return render(request, 'table.html', {'dataTable':dataTable})
 
 def addMiembro(request):
@@ -20,9 +17,20 @@ def addMiembro(request):
     if request.method == 'POST':
         form = MiembrosForm(request.POST)
         if form.is_valid():
-            #actualizar_dato_periodicamente.apply_async(countdown=10, repeat=True)
-            #imprimir_nombre_miembro.apply_async(countdown=10, repeat=True)
             form.save()
             return render(request, 'add_costumer.html', {'success':True})
     context = {'form':form}
     return render(request, 'add_costumer.html',context)
+
+def editMember (request , pk):
+    member_id = Miembros.objects.get(id=pk)
+    form = MiembrosForm(instance=member_id)
+
+    if request.method == "POST":
+        form = MiembrosForm(request.POST, instance=member_id)
+        if form.is_valid():
+            form.save()
+            #return render(request, 'update_costumer', {'success':True})
+            return redirect('table/')
+    context = {'form':form}
+    return render(request, 'update_costumer.html', context)
