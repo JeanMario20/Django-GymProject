@@ -11,10 +11,10 @@
     {% block content %}
     <h1>aqui va una tabla</h1>
     <!-- <input type="text" id="search" onkeyup="fetchResults()"> -->
-    <form method="GET">
+    <form action="searched" method="GET">
         {% csrf_token%}
-        <input name="busqueda" placeholder="buscar miembro" id="buscador">
-        <button type="submit">Buscar</button>
+        <input name="q" placeholder="buscar miembro" id="buscador">
+        <button type="submit">save</button>
     </form>
     <div id="results"></div>
     <table>
@@ -27,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for data in dataTable%}
+            {% for data in usuario%}
             <tr>
                 <td>{{data.nombreCompleto}}</td>
                 <td>{{data.Tierlist}}</td>

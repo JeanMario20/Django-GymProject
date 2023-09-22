@@ -11,10 +11,10 @@
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">save</button>
+        <button type="submit" name="update" value="Actualizar">Actualizar</button>
+        <button type="submit" name="delete" value="Eliminar">Eliminar</button>
     </form>
     {% endblock content %}
 
-    <a href="../table">table</a>
 </body>
 </html>l

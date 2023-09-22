@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('table/', views.view_table, name='table'),
+    path('seached/', views.search, name='searched'),
     path('add-miembro', views.addMiembro, name="add-mie"),
-    path('edit-miembro/<str:pk>?', views.editMember, name="edit-miembro"),
+    path('editMember_or_deleteMember/<str:pk>?', views.editMember_or_deleteMember, name="editMember_or_deleteMember"),
 ]
