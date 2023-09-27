@@ -1,13 +1,15 @@
-function fetchResults(){
-    var query = documents.getElementById('search').value;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/search/?q=' + query, true);
-    xhr.onload = function() {
-        if (this.status == 200){
-        document.getElementById('results').innerHTML = this.responseText;
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var busqueda = document.querySelector('input[name="busqueda"]').value.toLowerCase();
+    document.querySelectorAll('.objeto').forEach(function(objeto) {
+        var nombre = objeto.querySelector('p').textContent.toLowerCase();
+        if(nombre.includes(busqueda)) {
+            objeto.styles.display = '';
+        } else {
+            objeto.styles.display = 'none';
         }
-    };
-    xhr.send()
-}
+    });
+});
+
 
 

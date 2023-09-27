@@ -49,21 +49,3 @@ def delete_Member(request, pk):
         member_data.delete()
     context = {'member_data': member_data}
     return render(request, '../delete', context)
-
-#codigo para la busqueda del usuario
-def search(request):
-    if request.method == 'GET':
-        busqueda = request.GET.get('busqueda')
-        try:
-            usuario = Miembros.objects.get(nombreCompleto = busqueda)
-        except Miembros.DoesNotExist:
-            return HttpResponse("Usuario no encontrado")
-        dataTable = Miembros.objects.all()
-        return render(request, 'searched.html', {'usuario':usuario, 'dataTable':dataTable})
-
-    #q = request.GET.get('q', None)
-        #items = ''
-        #if q is None or q is "":
-            #items = Miembros.objects.all()
-        #elif q is not None:
-            #items = Miembros.objects.filter(nombreCompleto__contains=q)

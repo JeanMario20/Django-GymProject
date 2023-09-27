@@ -29,10 +29,12 @@
         <tbody>
             {% for data in dataTable%}
             <tr>
+                <div class="objeto">
                 <td>{{data.nombreCompleto}}</td>
                 <td>{{data.Tierlist}}</td>
                 <td>{{data.Fecha}}</td>
                 <td>{{data.monto}}</td>
+                </div>
                 <td>
                     <a href="{% url 'editMember_or_deleteMember' data.id %}">Edit</a>
                 </td>
